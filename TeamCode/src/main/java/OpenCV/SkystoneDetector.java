@@ -1,5 +1,7 @@
 package OpenCV;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -9,6 +11,7 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
+@Disabled
 public class SkystoneDetector extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
@@ -32,8 +35,9 @@ public class SkystoneDetector extends OpenCvPipeline {
     @Override
     public Mat processFrame(Mat input) {
         Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV);
-        Scalar lowHSV = new Scalar(23, 50, 70);
-        Scalar highHSV = new Scalar(32, 255, 255);
+        //COLOR BGR
+        Scalar lowHSV = new Scalar(10, 2, 67);
+        Scalar highHSV = new Scalar(9, 41, 242);
 
         Core.inRange(mat, lowHSV, highHSV, mat);
 
