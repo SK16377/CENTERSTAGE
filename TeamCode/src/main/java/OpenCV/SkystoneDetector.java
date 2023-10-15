@@ -20,6 +20,7 @@ public class SkystoneDetector extends OpenCvPipeline {
         RIGHT,
         NOT_FOUND
     }
+
     private Location location;
 
     static final Rect LEFT_ROI = new Rect(
@@ -38,7 +39,7 @@ public class SkystoneDetector extends OpenCvPipeline {
         //COLOR BGR
         Scalar lowHSV = new Scalar(10, 2, 67);
         Scalar highHSV = new Scalar(9, 41, 242);
-
+        
         Core.inRange(mat, lowHSV, highHSV, mat);
 
         Mat left = mat.submat(LEFT_ROI);
