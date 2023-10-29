@@ -68,6 +68,10 @@ public class protomap
     public DcMotor leftBack = null;
     public DcMotor rightBack = null;
 
+    public DcMotor climb = null;
+
+    public DcMotor intake = null;
+    public Servo drone  = null;
 //    public DcMotor rin = null;
 //    public DcMotor lin = null;
 
@@ -89,12 +93,13 @@ public class protomap
        
 
         // Define and Initialize Motors
-        leftFront  = hwMap.get(DcMotor.class, "leftFront"); //0
-        rightFront = hwMap.get(DcMotor.class, "rightFront"); //2
-        leftBack  = hwMap.get(DcMotor.class, "leftBack"); //1
-        rightBack = hwMap.get(DcMotor.class, "rightBack"); //3
-
-
+        leftFront  = hwMap.get(DcMotor.class, "lf"); //0
+        rightFront = hwMap.get(DcMotor.class, "rf"); //2
+        leftBack  = hwMap.get(DcMotor.class, "lb"); //1
+        rightBack = hwMap.get(DcMotor.class, "rb"); //3
+        //drone = hwMap.get(Servo.class, "release");
+        climb = hwMap.get(DcMotor.class, "climb");
+        intake = hwMap.get(DcMotor.class, "intake");
 
 
 
@@ -103,14 +108,16 @@ public class protomap
         rightFront.setDirection(DcMotor.Direction.FORWARD);
         leftBack.setDirection(DcMotor.Direction.REVERSE);
         rightBack.setDirection(DcMotor.Direction.FORWARD);
-        
+        climb.setDirection(DcMotor.Direction.FORWARD);
+        intake.setDirection(DcMotor.Direction.FORWARD);
 //
 
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
+        climb.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        rin.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        lin.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -118,7 +125,8 @@ public class protomap
         rightFront.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
-
+       climb.setPower(0);
+        intake.setPower(0);
 
 //        lin.setPower(0);
 //        rin.setPower(0);
@@ -131,6 +139,8 @@ public class protomap
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        climb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        lin.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        rin.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 

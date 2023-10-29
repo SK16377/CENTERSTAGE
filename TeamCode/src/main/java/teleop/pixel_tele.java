@@ -54,10 +54,35 @@ public class pixel_tele extends LinearOpMode {
             robot.leftBack.setPower((-gamepad1.left_stick_y - gamepad1.left_stick_x + gamepad1.right_stick_x) / SpeedAdjust);
             robot.rightBack.setPower((-gamepad1.left_stick_y + gamepad1.left_stick_x - gamepad1.right_stick_x) / SpeedAdjust);
 
-            if (gamepad1.left_bumper) {
-                SpeedAdjust = 4;
-            } else if (gamepad1.right_bumper) {
-                SpeedAdjust = 1;
+            while (gamepad2.left_trigger == 1) {
+                robot.climb.setPower(2);
+            }
+            if (gamepad2.left_trigger == 0) {
+                robot.climb.setPower(0);
+            }
+            while (gamepad2.right_trigger == 1) {
+                robot.climb.setPower(-4);
+            }
+            if (gamepad2.right_trigger == 0) {
+                robot.climb.setPower(0);
+//            }
+                while (gamepad1.right_trigger == 1) {
+                    robot.intake.setPower(-4);
+                }
+                if (gamepad1.right_trigger == 0) {
+                    robot.intake.setPower(0);
+                }
+                while (gamepad1.left_trigger == 1) {
+                    robot.intake.setPower(2);
+                }
+                if (gamepad1.left_trigger == 0) {
+                    robot.intake.setPower(0);
+                }
+                if (gamepad1.left_bumper) {
+                    SpeedAdjust = 4;
+                } else if (gamepad1.right_bumper) {
+                    SpeedAdjust = 1;
+                }
             }
         }
     }
