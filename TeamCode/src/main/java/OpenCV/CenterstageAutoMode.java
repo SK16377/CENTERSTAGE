@@ -7,10 +7,9 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvInternalCamera;
 
-@Autonomous(name="Skystone Detecotor", group="Auto")
-public class SkystoneAutoMode extends LinearOpMode {
+@Autonomous(name="Centerstage Detecotor", group="Auto")
+public class CenterstageAutoMode extends LinearOpMode {
     OpenCvCamera webcam;
     @Override
     public void runOpMode() throws InterruptedException {
@@ -18,7 +17,7 @@ public class SkystoneAutoMode extends LinearOpMode {
                 .getResources().getIdentifier("cameraMonitorViewId",
                         "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-        SkystoneDetector detector = new SkystoneDetector(telemetry);
+        CenterstageDetector detector = new CenterstageDetector(telemetry);
         webcam.setPipeline(detector);
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
         {

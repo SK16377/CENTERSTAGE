@@ -12,7 +12,7 @@ import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
 @Disabled
-public class SkystoneDetector extends OpenCvPipeline {
+public class CenterstageDetector extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
     public enum Location {
@@ -34,7 +34,7 @@ public class SkystoneDetector extends OpenCvPipeline {
             new Point(290, 170));
     static double PERCENT_COLOR_THRESHOLD = 0.4;
 
-    public SkystoneDetector(Telemetry t) { telemetry = t; }
+    public CenterstageDetector(Telemetry t) { telemetry = t; }
 
     @Override
     public Mat processFrame(Mat input) {
@@ -75,28 +75,14 @@ public class SkystoneDetector extends OpenCvPipeline {
             telemetry.addData("Cube Location", "left");
         }
         telemetry.update();
-//
-//        if (stoneLeft && stoneRight) {
-//            location = Location.NOT_FOUND;
-//            telemetry.addData("Cube Location", "not found");
-//        }
-//        else if (stoneLeft) {
-//            location = Location.RIGHT;
-//            telemetry.addData("Cube Location", "middle");
-//        }
-//        else {
-//            location = Location.LEFT;
-//            telemetry.addData("Cube Location", "right");
-//        }
-//        telemetry.update();
 
         Imgproc.cvtColor(mat, mat, Imgproc.COLOR_GRAY2RGB);
 
-        Scalar colorStone = new Scalar(255, 0, 0);
-        Scalar colorSkystone = new Scalar(0, 255, 0);
+        Scalar color = new Scalar(255, 0, 0);
+        Scalar colorCenterstage = new Scalar(0, 255, 0);
 
-        Imgproc.rectangle(mat, LEFT_ROI, location == Location.LEFT? colorSkystone:colorStone);
-        Imgproc.rectangle(mat, RIGHT_ROI, location == Location.RIGHT? colorSkystone:colorStone);
+        Imgproc.rectangle(mat, LEFT_ROI, location == Location.LEFT? colorCenterstage:color);
+        Imgproc.rectangle(mat, RIGHT_ROI, location == Location.RIGHT? colorCenterstage:color);
 
         return mat;
     }
