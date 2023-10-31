@@ -8,7 +8,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
-@Autonomous(name="Centerstage Detecotor", group="Auto")
+@Autonomous(name="Centerstage Detector", group="Auto")
 public class CenterstageAutoMode extends LinearOpMode {
     OpenCvCamera webcam;
     @Override
